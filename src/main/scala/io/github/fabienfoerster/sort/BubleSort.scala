@@ -2,7 +2,7 @@ package io.github.fabienfoerster.sort
 
 object BubleSort {
 
-  implicit class ListWithBubbleSort[A <% Ordered[A]](l: List[A]) {
+  implicit class ListWithBubbleSort[A](l: List[A])(implicit ev: A => Ordered[A]) {
     def sortBubble :List[A] = {
       def sort(list:List[A],toSort:List[A],sorted:List[A]): List[A] = toSort match {
         case Nil => if (list.isEmpty) sorted else sort(Nil,list,sorted)
